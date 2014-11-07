@@ -1,0 +1,65 @@
+_PLAYTEST_1_
+
+SESSION 1
+date: 10/29/2014
+start: 12:00am
+stop:3:45aam (player1 is next)
+notes:
+- player 2 has paper clip, player 1 does not
+- half the time was actually finishing the prototype (unforseen work that hadn't been done)
+- take half of the duration because I was playing myself
+- estimated 38 minutes playtime per player so far (1/3 factor for 2 players and 1 GM)
+    - learning game
+    - playing both players
+    - clunky paper prototype instead of streamlined tablet video game
+- I've been getting spell/enchantment flooded (especially with the Defensive + Technology deck), put less spells in a deck
+
+SESSION 2
+date: 10/30/2014
+start: 10:10pm
+stop: 1:00am (player 2 is next)
+notes:
+- spell/enchantment flooding is still a thing
+- game is really tedious to play without a computer doing everything
+- estimated 56 minutes playtime per player so far (1/3 factor for 2 players and 1 GM)
+- seeing modified units is pretty fun and surprising
+- destroying buildings feels gratifying because you also level up at the same time
+    - juice the animation and sound here!
+- there are so many rules to keep in mind that I am missing some
+- player 1 has 6 Buildings and player 2 has 5 Buildings
+- the decks actually feel somewhat balanced
+- 'control target monster/robot' feels VERY strong
+- player 2 captured the extra building #21 -> advantage
+- no one has poached any leveling yet (i am forgetting to)
+- player 1 has 13 units in play and player 2 has 16 units in play
+- a total of 29 units in play is quite a bit
+    - it doesn't feel like too many
+- only the calculations feel tedious, game is fun underneath
+- can't wait to play the digital version!
+- there is a lot you can't do with paper format
+    - can't hide mines
+    - can't submerge submarines
+    - can't have Fog of War
+        - ***game plays much differently with FoW -> scouting***
+        - no hiding in the forest
+    - can't have stealth
+    -
+-
+
+SESSION 3
+date: 11/1/2014
+start: 1:10pm 
+stop: 3:10pm
+notes:
+- player 2 won!
+- player 1 had buildings #11-20, only #11 left
+- player 2 had buildings #1-10, 4 and 6 were left
+- #21 was neutral at the top of the map, player 2 destroyed it
+- estimated 40 minutes playtime per player 
+- estimated 134 minutes playtime per player total
+    - would be much quicker on a computer => 25% time would be 30 minutes, desired
+- spells are appreciated more late game -> makes sense
+- player 2 destroyed player 1's HQ -> player 1 even had a creature that regenerated HQ power, but it got hit twice, once by a medium tank
+- the game feels really awesome at the end -> pacing: game just gets faster and faster as game goes on
+- I didn't use the terrain chart for movement much. i guessed most of the time
+- 

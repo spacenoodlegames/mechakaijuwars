@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "strange monsters and super robots", "strange monsters and super robots.pyproj", "{804CED37-3383-49B4-ABB2-BED79974070D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{804CED37-3383-49B4-ABB2-BED79974070D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{804CED37-3383-49B4-ABB2-BED79974070D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{804CED37-3383-49B4-ABB2-BED79974070D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{804CED37-3383-49B4-ABB2-BED79974070D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
