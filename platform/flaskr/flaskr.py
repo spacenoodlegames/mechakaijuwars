@@ -6,7 +6,7 @@ from flask import Flask, request, session, g, redirect, url_for, \
 from contextlib import closing
 
 # configuration
-DATABASE = './tmp/flaskr.db'
+DATABASE = '/home/spacenoodel/mechakaijuwars/platform/flaskr/tmp/flaskr.db'
 DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
@@ -52,7 +52,7 @@ def add_entry():
 	flash('New entry was successfully posted')
 	return redirect(url_for('show_entries'))
 
-@app.route('/login', methods=['GET', 'POST'])	
+@app.route('/login', methods=['GET', 'POST'])
 def login():
 	error = None
 	if request.method == 'POST':
@@ -72,6 +72,4 @@ def logout():
 	flash('You were logged out')
 	return redirect(url_for('show_entries'))
 
-if __name__ == '__main__':
-	app.run()
 
