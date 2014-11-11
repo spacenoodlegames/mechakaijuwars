@@ -9,7 +9,7 @@ from datetime import timedelta
 from functools import update_wrapper
 
 # configuration
-DATABASE = '/home/ec2-user/mechakaijuwars/platform/app/tmp/flaskr.db'
+DATABASE = '/home/ec2-user/mechakaijuwars/platform/app/tmp/platform.db'
 DEBUG = True
 SECRET_KEY = 'development key'
 USERNAME = 'admin'
@@ -18,7 +18,7 @@ PASSWORD = 'default'
 # create our little application :)
 app = Flask(__name__)
 app.config.from_object(__name__)
-app.config.from_envvar('FLASKR_SETTINGS', silent=True)
+app.config.from_envvar('PLATFORM_SETTINGS', silent=True)
 
 def connect_db():
 	return sqlite3.connect(app.config['DATABASE'])
