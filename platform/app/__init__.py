@@ -119,4 +119,4 @@ def logout():
 @app.route('/my_service', methods=['GET'])
 @crossdomain(origin='*')
 def my_service():
-	return jsonify(foo='cross domain ftwsies')
+	return json.dumps({'init':{'host':'prod-platform'}})
