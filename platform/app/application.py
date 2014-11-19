@@ -115,7 +115,7 @@ def my_service():
     # message = request.get_json().get('name', '')
     # print str(request.data)
     # print request.args.get('p')
-    return json.dumps({'init':{'host':'prod-platform', 'response': str(users.select(users.c.id == 4).execute().first())}})
+    return json.dumps({'init':{'host':'prod-platform', 'response': str(users.select(users.c.id == 1).execute().first())}})
 
 if __name__ == '__main__':
-    application.run()
+    application.run('0.0.0.0')
