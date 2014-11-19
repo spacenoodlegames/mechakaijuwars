@@ -7,38 +7,47 @@ from contextlib import closing
 import json
 from datetime import timedelta
 from functools import update_wrapper
+import MySQLdb
+
+# from flask.ext.sqlalchemy import SQLAlchemy
+
+# from database import db_session
+# from database import init_db
+# from models import User
+
+from sqlalchemy import create_engine, MetaData, Table
+import time
 
 # configuration
-DATABASE = '/home/ec2-user/mechakaijuwars/platform/app/tmp/platform.db'
-DEBUG = True
-SECRET_KEY = 'development key'
-USERNAME = 'admin'
-PASSWORD = 'default'
+# DATABASE = '/home/ec2-user/mechakaijuwars/platform/app/tmp/platform.db'
+# DEBUG = True
+# SECRET_KEY = 'development key'
+# USERNAME = 'admin'
+# PASSWORD = 'default'
 
 # create our little application :)
-app = Flask(__name__)
-app.config.from_object(__name__)
-app.config.from_envvar('PLATFORM_SETTINGS', silent=True)
+application = Flask(__name__)
+application.config.from_object(__name__)
+application.config.from_envvar('PLATFORM_SETTINGS', silent=True)
 
-def connect_db():
-	return sqlite3.connect(app.config['DATABASE'])
+engine = create_engine('mysql://space_noodel:tack3toM@mkw.c488gn8kr4wp.us-west-2.rds.amazonaws.com:3306/mkw', convert_unicode=True)
+metadata = MetaData(bind=engine)
 
-def init_db():
-	with closing(connect_db()) as db:
-		with app.open_resource('schema.sql', mode='r') as f:
-			db.cursor().executescript(f.read())
-		db.commit()
+users = Table('users', metadata, autoload=True)
 
-@app.before_request
+@application.before_request
 def before_request():
-	g.db = connect_db()
+    t = time.time()
+    con = engine.connect()
+    con.execute(users.insert(), name='admin' + str(t), email='admin@localhost' + str(t))
+	
+# @application.teardown_appcontext
+# def shutdown_session(exception=None):
+# 	db_session.remove()
 
-@app.teardown_request
+@application.teardown_request
 def teardown_request(exception):
-	db = getattr(g, 'db', None)
-	if db is not None:
-		db.close()
-
+    print 'teardown'
 def crossdomain(origin=None, methods=None, headers=None,
                 max_age=21600, attach_to_all=True,
                 automatic_options=True):
@@ -80,43 +89,33 @@ def crossdomain(origin=None, methods=None, headers=None,
         return update_wrapper(wrapped_function, f)
     return decorator
 
-@app.route('/')
-def show_entries():
-	cur = g.db.execute('select title, text from entries order by id desc')
-	entries = [dict(title=row[0], text=row[1]) for row in cur.fetchall()]
-	return render_template('show_entries.html', entries=entries)
+# @app.route('/login', methods=['GET', 'POST'])
+# def login():
+# 	error = None
+# 	if request.method == 'POST':
+# 		if request.form['username'] != app.config['USERNAME']:
+# 			error = 'Invalid username'
+# 		elif request.form['password'] != app.config['PASSWORD']:
+# 			error = 'Invalid password'
+# 		else:
+# 			session['logged_in'] = True
+# 			flash('You were logged in')
+# 			return redirect(url_for('show_entries'))
+# 	return render_template('login.html', error=error)
 
-@app.route('/add', methods=['POST'])
-def add_entry():
-	if not session.get('logged_in'):
-		abort(401)
-	g.db.execute('insert into entries (title, text) values (?, ?)',
-		[request.form['title'], request.form['text']])
-	g.db.commit()
-	flash('New entry was successfully posted')
-	return redirect(url_for('show_entries'))
+# @app.route('/logout')
+# def logout():
+# 	session.pop('logged_in', None)
+# 	flash('You were logged out')
+# 	return redirect(url_for('show_entries'))
 
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-	error = None
-	if request.method == 'POST':
-		if request.form['username'] != app.config['USERNAME']:
-			error = 'Invalid username'
-		elif request.form['password'] != app.config['PASSWORD']:
-			error = 'Invalid password'
-		else:
-			session['logged_in'] = True
-			flash('You were logged in')
-			return redirect(url_for('show_entries'))
-	return render_template('login.html', error=error)
-
-@app.route('/logout')
-def logout():
-	session.pop('logged_in', None)
-	flash('You were logged out')
-	return redirect(url_for('show_entries'))
-
-@app.route('/my_service', methods=['GET'])
+@application.route('/my_service', methods=['GET', 'POST'])
 @crossdomain(origin='*')
 def my_service():
-	return json.dumps({'init':{'host':'prod-platform'}})
+    # message = request.get_json().get('name', '')
+    # print str(request.data)
+    # print request.args.get('p')
+    return json.dumps({'init':{'host':'prod-platform', 'response': str(users.select(users.c.id == 4).execute().first())}})
+
+if __name__ == '__main__':
+    application.run()
