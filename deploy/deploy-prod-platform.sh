@@ -1,10 +1,10 @@
-echo "starting deployment"
-
-cd /home/ec2-user/eb/mechakaijuwars
+eb stop
+eb init -f
+cd "/var/lib/jenkins/jobs/MKW Deploy Prod Platform/workspace"
 git pull origin master
-cd /home/ec2-user/eb/mechakaijuwars/platform/app
+cd "/var/lib/jenkins/jobs/MKW Deploy Prod Platform/workspace/platform/app"
 git add .
 git commit -m "automated deployment by elastic beanstalk"
 git aws.push
-
-echo "ending deployment"
+eb start
+eb status --verbose
